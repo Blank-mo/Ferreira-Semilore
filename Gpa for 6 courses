@@ -1,0 +1,42 @@
+def compute_gpa():
+    # Dictionary to map grade letters to grade points
+    grade_points = {
+        'A': 4.0,
+        'A-': 3.7,
+        'B+': 3.3,
+        'B': 3.0,
+        'B-': 2.7,
+        'C+': 2.3,
+        'C': 2.0,
+        'C-': 1.7,
+        'D+': 1.3,
+        'D': 1.0,
+        'F': 0.0
+    }
+    
+    total_grade_points = 0
+    total_credits = 0
+    
+    print("Enter the details for 6 courses:")
+    
+    for i in range(1, 7):
+        print(f"\nCourse {i}:")
+        credit = int(input("Enter the credit hours for the course: "))
+        grade = input("Enter the grade (e.g., A, B+, C-): ").upper()
+        
+        if grade in grade_points:
+            total_grade_points += grade_points[grade] * credit
+            total_credits += credit
+        else:
+            print("Invalid grade entered. Please try again.")
+            return
+    
+    if total_credits == 0:
+        print("No credits entered. Cannot compute GPA.")
+        return
+    
+    gpa = total_grade_points / total_credits
+    print(f"\nYour GPA for the 6 courses is: {gpa:.2f}")
+
+# Call the function to compute GPA
+compute_gpa()
